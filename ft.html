@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profil — Aulia Tri Az-zahra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    
+    :root{
+      --bg:#F8F6F3;
+      --card:#ffffff;
+      --text:#0b1220;
+      --muted:#6b7280;
+      --accent:#b78b34; 
+      --accent-2:#22303f; 
+      --radius:14px;
+      --max-width:1100px;
+      --glass: rgba(255,255,255,0.6);
+    }
+
+    :root.dark{
+      --bg:#0b0f13;
+      --card:#07101a;
+      --text:#e7e7e7;
+      --muted:#9aa3ac;
+      --accent:#c7a55c;
+      --accent-2:#0b2540;
+      --glass: rgba(10,14,18,0.6);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg), #efeae6 200px);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    .container{
+      max-width:var(--max-width);
+      margin:32px auto;
+      padding:24px;
+    }
+
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .logo{
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent-2),var(--accent));
+      display:grid;
+      place-items:center;
+      color:white;
+      font-weight:700;
+      font-family:"Playfair Display";
+      box-shadow: 0 6px 18px rgba(11,17,24,0.12);
+    }
+    .brand h1{
+      margin:0;
+      font-family:"Playfair Display";
+      font-size:18px;
+      letter-spacing:0.4px;
+    }
+    nav{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    nav a{
+      text-decoration:none;
+      color:var(--muted);
+      padding:8px 12px;
+      border-radius:10px;
+      font-weight:600;
+    }
+    nav a.active, nav a:hover{
+      color:var(--accent-2);
+      background:var(--glass);
+    }
+
+    .nav-toggle{
+      display:none;
+      background:transparent;
+      border:1px solid rgba(0,0,0,0.06);
+      padding:8px 10px;
+      border-radius:10px;
+    }
+
+    main{
+      background:transparent;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:28px;
+      align-items:center;
+      margin-bottom:28px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow: 0 8px 30px rgba(11,17,24,0.06);
+      border: 1px solid rgba(11,17,24,0.04);
+    }
+    .intro h2{
+      margin:0;
+      font-family:"Playfair Display";
+      font-size:30px;
+      color:var(--accent-2);
+    }
+    .intro p{color:var(--muted); margin-top:8px}
+    .cta{
+      margin-top:16px;
+      display:flex;
+      gap:10px;
+    }
+    .btn{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      border:0;
+      font-weight:600;
+    }
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent), #d9b06b);
+      color:#fff;
+      box-shadow: 0 8px 22px rgba(183,139,52,0.18);
+    }
+    .btn-outline{
+      background:transparent;
+      color:var(--accent-2);
+      border:1px solid var(--glass);
+    }
+
+    .profile {
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .avatar{
+      width:120px;
+      height:120px;
+      border-radius:16px;
+      overflow:hidden;
+      flex-shrink:0;
+      border:4px solid rgba(255,255,255,0.6);
+      background:linear-gradient(180deg,#f4efe9,#efe6d9);
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .meta small{ color:var(--muted); display:block; margin-top:6px }
+
+    .about{
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:24px;
+      margin-bottom:28px;
+    }
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .skill{padding:8px 10px;border-radius:10px;background:linear-gradient(90deg, rgba(34,48,63,0.06), rgba(183,139,52,0.04)); font-weight:600; color:var(--accent-2)}
+
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+      gap:14px;
+      margin-top:12px;
+    }
+
+    .portfolio-card{
+      border-radius:12px;
+      overflow:hidden;
+      background:linear-gradient(180deg,rgba(0,0,0,0.02),transparent);
+      padding:12px;
+      min-height:140px;
+    }
+
+    form .row{display:flex;gap:10px}
+    form input, form textarea{
+      width:100%;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid rgba(11,17,24,0.06);
+      background:transparent;
+      color:var(--text);
+      font-size:14px;
+      resize:vertical;
+    }
+    .field-error{color:#b33; font-size:13px; margin-top:6px}
+
+    footer{
+      margin-top:36px;
+      padding:18px 0;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .slideshow{
+      position:relative;
+      border-radius:12px;
+      overflow:hidden;
+    }
+    .slides{display:flex;transition:transform .45s ease}
+    .slide{min-width:100%;padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
+    .slide h4{margin:0 0 8px 0}
+    .slide p{margin:0;color:var(--muted)}
+    .slide-nav{position:absolute; left:12px; right:12px; bottom:12px; display:flex; justify-content:space-between; gap:8px}
+    .dot{width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,0.15)}
+
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr; padding-bottom:6px}
+      .about{grid-template-columns:1fr; }
+      .slide-nav{left:8px;right:8px}
+      nav{display:none}
+      .nav-toggle{display:inline-flex}
+    }
+
+    label{font-weight:600;display:block;margin-bottom:6px}
+    .muted{color:var(--muted)}
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <img src="LOGO-UNILA.png" alt="logo unila"
+        width="80"
+          <h1> Aulia Tri Az-zahra</h1>
+          <div class="muted">Mahasiswa Universitas Lampung</div>
+        </div>
+        </header>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <nav id="mainNav" aria-label="Main navigation">
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#portfolio" class="nav-link">Portfolio</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <button class="nav-toggle btn btn-outline" id="darkToggle" title="Toggle dark mode">🌙</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero" aria-label="Home">
+        <div class="card intro">
+          <h2>Haiii kenalin saya <span id="displayName">Aulia Tri Az-zahra</span></h2>
+          <p>Disini saya membuat website tentang diri saya.saya  memiliki ketertarikan besar di bidang teknologi informasi dan desain web.
+            Saya senang belajar hal baru, terutama yang berhubungan dengan HTML, CSS, dan JavaScript.
+            Selain itu, Saya adalah pribadi yang teliti, mudah beradaptasi, dan senang bekerja sama dalam tim. 
+            Dalam setiap proyek, saya berusaha memberikan hasil terbaik dengan memadukan kreativitas dan logika.
+
+          <div class="cta">
+            <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hubungi Saya</button>
+            <a class="btn btn-outline" href="#portfolio">Portofolio</a>
+          </div>
+
+          <div style="margin-top:18px" class="muted">
+            <strong>Lokasi:</strong> Bandar Lampung, Indonesia
+            •<strong>Email:</strong> aultrzhr@gmail.com
+          </div>
+        </div>
+
+        <aside class="card profile" aria-label="Profile card">
+          <div class="avatar" id="avatarWrap">
+            <img src="foto aulia.jpg" alt="Foto profil"/>
+          </div>
+          <div class="meta">
+            <div style="font-weight:700">Aulia Tri Az-zahra</div>
+            <small class="muted"></small>
+            <div style="margin-top:12px">
+              <div class="muted">Keahlian:</div>
+              <div class="skills">
+                <span class="skill">HTML</span>
+                <span class="skill">canva</span>
+                <span class="skill">figma</span>
+      
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="about" class="about" aria-label="About me">
+        <div class="card">
+          <h3 style="font-family:Playfair Display; margin-top:0">About Me</h3>
+          <p class="muted">Tuliskan biodata singkat, pendidikan, minat, dan pengalamanmu di sini. Contoh:</p>
+          <ul>
+            <li><strong>Nama:</strong> Aulia Tri Az-zahra</li>
+            <li><strong>NPM:</strong> 2413025073</li>
+            <li><strong>Pendidikan:</strong> S1 Pendidikan Teknologi Informasi</li>
+            <li><strong>Minat:</strong>Tertarik belajar dasar pemrograman web dan membuat tampilan sederhana untuk latihan tugas</li>
+          </ul>
+
+          <h4 style="margin-top:12px">Pengalaman / Prestasi</h4>
+          <p class="muted">Pernah membuat desain antarmuka (UI) menggunakan Figma dan mencoba menyusun tampilan halaman web sederhana dengan HTML dan CSS</p>
+        </div>
+
+        <div class="card">
+          <h4 style="font-family:Playfair Display; margin:0">Keahlian Teknis</h4>
+          <div class="skills" style="margin-top:12px">
+            <span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">JS</span>
+            <span class="skill">canva</span><span class="skill">Figma</span>
+          </div>
+
+          <h4 style="margin-top:16px">Soft Skills</h4>
+          <ul class="muted">
+            <li>Komunikasi</li>
+            <li>Kerja tim</li>
+            <li>Problem solving</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="portfolio" class="card" aria-label="Portfolio">
+        <h3 style="font-family:Playfair Display; margin-top:0">Portofolio</h3>
+
+        <div class="slideshow" style="margin-top:12px;">
+          <div class="slides" id="slides">
+            <div class="slide">
+              <h4>Website Profil Pribadi</h4>
+              <p class="muted">Website profil menggunakan HTML, CSS, dan JavaScript sebagai tugas mata kuliah Grafika Komputer.</p>
+            </div>
+            <div class="slide">
+              <h4>E-commerce Mini</h4>
+              <p class="muted">Desain halaman dashboard menggunakan Figma, menampilkan data sederhana dan tata letak bersih.</p>
+            </div>
+          </div>
+
+          <div class="slide-nav">
+            <div style="display:flex;gap:8px" id="dots">
+              <div class="dot" data-index="0"></div>
+              <div class="dot" data-index="1"></div>
+            </div>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-outline" onclick="prevSlide()">Prev</button>
+              <button class="btn btn-outline" onclick="nextSlide()">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+        <img src="projek 1.png" alt="Tampilan Proyek A" style="width:100%; border-radius:10px; margin-bottom:8px;">
+        <h4>Proyek A</h4>
+        <p class="muted">Proyek ini dibuat menggunakan Figma untuk latihan menyusun tampilan dashboard aplikasi. 
+    Fokusnya ada pada tata letak yang rapi dan pemilihan warna agar data mudah dibaca.
+      </p>
+  </div>
+
+<div class="portfolio-card">
+  <img src="projek 2.png" alt="Tampilan Proyek B" style="width:100%; border-radius:10px; margin-bottom:8px;">
+  <h4>Proyek B</h4>
+  <p class="muted">Website ini dibuat menggunakan HTML, CSS, dan JavaScript. 
+    Isinya memperkenalkan diri, menampilkan data pribadi, serta hasil latihan desain.</p>
+</div>
+
+        </div>
+      </section>
+
+      <section id="contact" class="card" aria-label="Contact" style="margin-top:18px">
+        <h3 style="font-family:Playfair Display; margin-top:0">Contact</h3>
+        <p class="muted">Isi form ini untuk mengirim pesan.</p>
+
+        <form id="contactForm" novalidate>
+          <div class="row">
+            <div style="flex:1">
+              <label for="name">Nama</label>
+              <input id="name" name="name" required placeholder="Nama lengkap"/>
+              <div class="field-error" id="err-name" aria-live="polite"></div>
+            </div>
+            <div style="width:220px">
+              <label for="phone">No. Telepon</label>
+              <input id="phone" name="phone" placeholder="+62xxx" />
+            </div>
+          </div>
+
+          <div style="margin-top:10px">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="contoh@gmail.com"/>
+            <div class="field-error" id="err-email" aria-live="polite"></div>
+          </div>
+
+          <div style="margin-top:10px">
+            <label for="message">Pesan</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Tulis pesanmu..."></textarea>
+            <div class="field-error" id="err-message" aria-live="polite"></div>
+          </div>
+
+          <div style="margin-top:12px; display:flex; gap:10px; align-items:center">
+            <button class="btn btn-primary" type="submit">Kirim Pesan</button>
+            <button class="btn btn-outline" type="button" onclick="clearForm()">Bersihkan</button>
+            <div class="muted" style="font-size:13px">atau <a href="mailto:aultrzhr@example.com">kirim email langsung</a></div>
+          </div>
+
+          <div id="form-success" style="margin-top:12px; color:green; display:none">Pesan dikirim (demo).</div>
+        </form>
+      </section>
+
+      <footer>
+        © <span id="year"></span> aultrzhr@gmail.com 
+      </footer>
+    </main>
+  </div>
+
+  <script>
+
+    const root = document.documentElement;
+    const darkToggle = document.getElementById('darkToggle');
+
+    function setDarkMode(on){
+      if(on){
+        root.classList.add('dark');
+        localStorage.setItem('pref-dark','1');
+        darkToggle.textContent = '☀️';
+      } else {
+        root.classList.remove('dark');
+        localStorage.removeItem('pref-dark');
+        darkToggle.textContent = '🌙';
+      }
+    }
+  
+    (function(){
+      const pref = localStorage.getItem('pref-dark');
+      if(pref === '1') setDarkMode(true);
+      else setDarkMode(false);
+    })();
+
+    darkToggle.addEventListener('click', () => {
+      setDarkMode(!root.classList.contains('dark'));
+    });
+
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link=>{
+      link.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+        navLinks.forEach(l=>l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    const sections = document.querySelectorAll('main section[id]');
+    window.addEventListener('scroll', ()=>{
+      const y = window.scrollY + 120;
+      sections.forEach(sec=>{
+        if(y >= sec.offsetTop && y < sec.offsetTop + sec.offsetHeight){
+          const id = sec.id;
+          navLinks.forEach(l=>{
+            l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    });
+
+    const slidesEl = document.getElementById('slides');
+    const slides = slidesEl.children;
+    const total = slides.length;
+    let index = 0;
+    const dots = document.querySelectorAll('.dot');
+
+    function goTo(i){
+      index = (i + total) % total;
+      slidesEl.style.transform = 'translateX(' + (-index * 100) + '%)';
+      dots.forEach((d,di)=> d.style.background = di===index ? 'var(--accent-2)' : 'rgba(0,0,0,0.12)');
+    }
+    function nextSlide(){ goTo(index+1) }
+    function prevSlide(){ goTo(index-1) }
+
+    window.nextSlide = nextSlide;
+    window.prevSlide = prevSlide;
+
+    dots.forEach(d=> d.addEventListener('click', ()=> goTo(parseInt(d.dataset.index)) ));
+    goTo(0);
+    let slideTimer = setInterval(nextSlide, 4500);
+  
+    document.querySelector('.slideshow').addEventListener('mouseenter', ()=> clearInterval(slideTimer));
+    document.querySelector('.slideshow').addEventListener('mouseleave', ()=> slideTimer = setInterval(nextSlide, 4500));
+
+    const form = document.getElementById('contactForm');
+    const errName = document.getElementById('err-name');
+    const errEmail = document.getElementById('err-email');
+    const errMessage = document.getElementById('err-message');
+    const successMsg = document.getElementById('form-success');
+
+    function clearErrors(){
+      errName.textContent = '';
+      errEmail.textContent = '';
+      errMessage.textContent = '';
+    }
+
+    function validateEmail(email){
+     
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      clearErrors();
+      let valid = true;
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      if(!name || name.length < 2){
+        errName.textContent = 'Masukkan nama yang valid (minimal 2 karakter).';
+        valid = false;
+      }
+      if(!email || !validateEmail(email)){
+        errEmail.textContent = 'Masukkan alamat email yang valid.';
+        valid = false;
+      }
+      if(!message || message.length < 6){
+        errMessage.textContent = 'Pesan terlalu pendek (minimal 6 karakter).';
+        valid = false;
+      }
+
+      if(!valid) return;
+
+      successMsg.style.display = 'block';
+      successMsg.textContent = 'Pesan berhasil (demo).';
+      form.reset();
+      setTimeout(()=> successMsg.style.display='none', 3500);
+
+    });
+
+    function clearForm(){
+      form.reset();
+      clearErrors();
+      successMsg.style.display = 'none';
+    }
+    window.clearForm = clearForm;
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function personalize(){
+      const NAME = ''; 
+      const EMAIL = ''; 
+      const PHOTO = ''; 
+      if(NAME){
+        document.getElementById('displayName').textContent = NAME;
+        document.querySelector('.brand h1').textContent = NAME;
+        document.querySelector('.meta > div').textContent = NAME;
+      }
+      if(EMAIL){
+        const mailLink = document.querySelector('#contact a[href^="mailto:"]');
+        if(mailLink) mailLink.href = 'mailto:' + EMAIL;
+      }
+      if(PHOTO){
+        document.getElementById('avatar').src = PHOTO;
+      }
+    })();
+  </script>
+</body>
+</html>
